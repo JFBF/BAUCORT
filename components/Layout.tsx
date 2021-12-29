@@ -1,32 +1,56 @@
 import React, { ReactNode } from 'react';
-import Link from 'next/link';
 import Head from 'next/head';
+
+// Hooks
+import { useRouter } from 'next/router';
+
+// Ant Design
+import { Layout, Tabs } from 'antd';
+
+// Styles
+import 'antd/dist/antd.css';
+import styles from './layout.module.scss';
+
+const { TabPane } = Tabs;
+const { Header } = Layout;
 
 interface Props {
   children?: ReactNode;
 }
 
-const Layout: React.FC<Props> = ({ children }) => (
-  <div>
-    <Head>
-      <title>BAUCORT</title>
-      <meta charSet="utf-8" />
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-    </Head>
-    <header>
-      {/* Add a cool header with ant desing */}
-      <nav>
-        <Link href="/">
-          <a>Login</a>
-        </Link>{' '}
-        |{' '}
-        <Link href="/Reporte-asistencias">
-          <a>Reporte de Asistencias</a>
-        </Link>{' '}
-      </nav>
-    </header>
-    {children}
-  </div>
-);
+const AppLayout: React.FC<Props> = ({ children }) => {
+  const router = useRouter();
 
-export default Layout;
+  const onTabClick = React.useCallback(
+    (key: string) => {
+      router.push(key);
+    },
+    [router],
+  );
+
+  return (
+    <Layout>
+      <Head>
+        <title>BAUCORT</title>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <Header>
+        <Tabs
+          className={styles.tabs}
+          defaultActiveKey="/"
+          activeKey={router.route}
+          onChange={onTabClick}
+        >
+          <TabPane tab="Login" key="/" />
+          <TabPane tab="Reporte de Asistencias" key="/Reporte-asistencias" />
+        </Tabs>
+      </Header>
+      <body>
+        <Layout className={styles.bodyLayout}>{children}</Layout>
+      </body>
+    </Layout>
+  );
+};
+
+export default AppLayout;

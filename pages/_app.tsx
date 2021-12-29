@@ -1,12 +1,11 @@
-import * as React from "react";
-import { AppProps, AppContext } from "next/app";
+import * as React from 'react';
+import { AppProps, AppContext } from 'next/app';
 
 // Store
-import { wrapper } from "../redux/store";
+import { wrapper } from '../redux/store';
 
 // Components
-import Layout from "../components/Layout";
-
+import Layout from '../components/Layout';
 
 type GetInitialProps = (context: AppContext) => unknown;
 
@@ -15,7 +14,7 @@ const WrappedApp: React.FC<AppProps> & { getInitialProps: GetInitialProps } = ({
   pageProps,
 }) => (
   <Layout>
-    <Component {...pageProps} />{" "}
+    <Component {...pageProps} />{' '}
   </Layout>
 );
 

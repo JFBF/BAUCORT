@@ -1,3 +1,4 @@
+//eslint-disable-next-line @typescript-eslint/ban-types
 export type AnyData = {};
 
 export interface AsyncActionType {
@@ -14,5 +15,5 @@ export type Student = {
 export type Entrie = {
   API?: string;
   Description?: string;
-  HTTPS?: boolean
+  HTTPS?: boolean;
 };

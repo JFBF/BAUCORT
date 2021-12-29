@@ -5,7 +5,14 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "type-check": "tsc"
+    "prettier": "prettier --list-different '**/*.{js,ts,tsx,jsx,scss}' && echo '✅ PASSED Prettier' || (echo '\nPlease fix code formatting by running:\nnpm run prettier:fix\n'; exit 1)",
+    "prettier:fix": "prettier --write '**/*.{js,ts,tsx,jsx,scss}'",
+    "prettier:view": "prettylint '**/*.{js,ts,tsx,jsx}'",
+    "type-check": "tsc --noEmit -skipLibCheck && echo '✅ PASSED Types'",
+    "type-check:watch": "npm run type-check -- --watch",
+    "lint": "eslint --ext .js,.ts,.tsx,.jsx . && echo '✅ PASSED ESLint' || (echo '\nPlease fix code formatting by running:\nnpm run lint:fix\n'; exit 1)",
+    "lint:fix": "eslint --ext .js,.ts,.tsx,.jsx . --fix",
+    "ci-check": "npm run prettier && npm run lint && npm run type-check && npm run test"
   },
   "dependencies": {
     "next": "latest",
@@ -21,9 +28,17 @@
     "@types/node": "^12.12.21",
     "@types/react": "^16.9.16",
     "@types/react-dom": "^16.9.4",
-    "@types/react-redux": "^7.1.9",
+    "@types/react-redux": "^7.1.21",
+    "@typescript-eslint/eslint-plugin": "^5.8.1",
+    "@typescript-eslint/parser": "^5.8.1",
     "axios": "^0.24.0",
+    "eslint": "^8.5.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
     "lodash": "^4.17.21",
+    "prettier": "^2.5.1",
     "typescript": "4.0"
   },
   "license": "MIT"

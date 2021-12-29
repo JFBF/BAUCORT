@@ -1,8 +1,8 @@
-import { AnyAction } from "redux";
+import { AnyAction } from 'redux';
 
 // Types
-import { FETCH_ENTRIES } from "../actionTypes";
-import { Entrie } from "../../types";
+import { FETCH_ENTRIES } from '../actionTypes';
+import { Entrie } from '../../types';
 
 export interface EntrieState {
   isLoading: boolean;

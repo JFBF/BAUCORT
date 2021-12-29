@@ -1,9 +1,9 @@
-import Axios, { AxiosRequestConfig } from "axios";
+import Axios, { AxiosRequestConfig } from 'axios';
 
 // Types
-import { Dispatch } from "react";
-import { AnyAction } from "redux";
-import { AsyncActionType, AnyData } from "../types";
+import { Dispatch } from 'react';
+import { AnyAction } from 'redux';
+import { AsyncActionType, AnyData } from '../types';
 
 /* Esta es una funcion que sirve para multiples escenarios cuando llama un endpoint
   maneja los status de isLoading (cuando hace el llamada, así puede agregar un state de loading mientras llega la data si lo desea),
@@ -17,7 +17,7 @@ const doAsync = async <
   T extends AnyData,
   R = void,
   S = T,
-  E = string | number | (string | number)[]
+  E = string | number | (string | number)[],
 >(
   dispatch: Dispatch<AnyAction>,
   action: AsyncActionType,
@@ -28,7 +28,7 @@ const doAsync = async <
     mapRequest?: () => R;
     mapSuccess?: (payload: T) => S;
     mapError?: (payload: unknown) => E;
-  }
+  },
 ): Promise<T | void> => {
   const {
     mapRequest = () => undefined,
@@ -50,16 +50,16 @@ const doAsync = async <
   } catch (err) {
     if (Axios.isCancel(err)) {
       // Si cancela el token del request
-      console.warn("clientApi: the cancel token cancelled the request", err);
+      console.warn('clientApi: the cancel token cancelled the request', err);
     } else {
       if (options?.throwError) {
         // Si en las opciones envía esto, manejara el error en el state de redux
-        console.trace("Do Async ignoring and re-throwing error", err);
+        console.trace('Do Async ignoring and re-throwing error', err);
         throw err;
       } else {
         // arroja error normal en el APP
-        console.error("clientApi Error", err);
-        console.trace("clientApi Error", err);
+        console.error('clientApi Error', err);
+        console.trace('clientApi Error', err);
 
         dispatch({ type: action.error, payload: mapError(err.message) });
       }

@@ -39,3 +39,23 @@ When we run `next dev` the next time, Next.js will start looking for any `.ts` o
 Next.js has built-in TypeScript declarations, so we'll get autocompletion for Next.js' modules straight away.
 
 A `type-check` script is also added to `package.json`, which runs TypeScript's `tsc` CLI in `noEmit` mode to run type-checking separately. You can then include this, for example, in your `test` scripts.
+
+## Config
+
+Added esLint and Prettier, you can run to see the elements that should be updated
+```
+npm run prettier || npm run lint
+```
+
+if you want to fix the components juts run 
+```
+npm run prettier:fix
+```
+
+If you are in windows, you should run  
+
+```
+npm config set script-shell "C:\\Program Files\\git\\bin\\bash.exe"
+```
+
+ 

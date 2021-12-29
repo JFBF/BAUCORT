@@ -1,1 +1,1 @@
-export { default } from "../components/ReporteAsistencias";
+export { default } from '../components/ReporteAsistencias';

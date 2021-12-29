@@ -1,8 +1,8 @@
-import { AnyAction } from "@reduxjs/toolkit";
+import { AnyAction } from '@reduxjs/toolkit';
 
 // Types
-import { GET_DATA } from "../actionTypes";
-import { Student } from "../../types";
+import { GET_DATA } from '../actionTypes';
+import { Student } from '../../types';
 
 export interface Estudiante {
   data: Student[];
@@ -11,12 +11,15 @@ export interface Estudiante {
 }
 
 export const initialState = {
-  data: [{ id: 0, name: "" }],
-  error: "",
+  data: [{ id: 0, name: '' }],
+  error: '',
   isLoading: false,
 };
 
-const dataReducer = (state: Estudiante = initialState, action: AnyAction): Estudiante => {
+const dataReducer = (
+  state: Estudiante = initialState,
+  action: AnyAction,
+): Estudiante => {
   switch (action.type) {
     case GET_DATA:
       return { ...state, data: action.payload };

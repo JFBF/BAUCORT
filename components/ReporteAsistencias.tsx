@@ -1,18 +1,18 @@
-import React from "react";
+import React from 'react';
 
 // Actions
-import { setEstudiantes } from "../redux/actions/estudiantes.actions";
-import { fetchEntries } from "../redux/actions/entries.actions";
+import { setEstudiantes } from '../redux/actions/estudiantes.actions';
+import { fetchEntries } from '../redux/actions/entries.actions';
 
 // Redux
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from 'react-redux';
 
 // Types
-import { Student, Entrie } from "../types";
-import { State } from "../redux/reducers/root.reducers";
+import { Student, Entrie } from '../types';
+import { State } from '../redux/reducers/root.reducers';
 
 // MockData
-import { sampleUserData } from "../mockData/example";
+import { sampleUserData } from '../mockData/example';
 
 const ReporteAsistencias: React.FC = () => {
   const dispatch = useDispatch();
@@ -22,14 +22,14 @@ const ReporteAsistencias: React.FC = () => {
 
   // ejemplo de lectura del state  ala data de estudiantes
   const estudiantes = useSelector<State, Student[]>(
-    (state) => state.estudiantes.data
+    (state) => state.estudiantes.data,
   );
   const entries = useSelector<State, Entrie[]>((state) => state.entries.data);
   const isEntriesLoading = useSelector<State, boolean>(
-    (state) => state.entries.isLoading
+    (state) => state.entries.isLoading,
   );
   const entriesError = useSelector<State, null | string>(
-    (state) => state.entries.error
+    (state) => state.entries.error,
   );
 
   React.useEffect(
@@ -52,7 +52,8 @@ const ReporteAsistencias: React.FC = () => {
 
     Si crea algun listener o algo, con agregar return lo puede destruir, el return es que hacer antes de destruir el componentes (como el timer que simula un delay en el enpoint)
   */
-    []
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
   );
 
   // este hook se usa tipicamente para funciones
@@ -62,7 +63,7 @@ const ReporteAsistencias: React.FC = () => {
     },
 
     // en este caso es importante siempre agregar las dependencias para el correcto funcionamiento
-    [setCont, cont]
+    [setCont, cont],
   );
 
   // este hook también necesita todas las dependencias, se usa usualmente para objetos que se component de varias cosas
@@ -73,7 +74,7 @@ const ReporteAsistencias: React.FC = () => {
         ...estudiante,
         id: estudiante.id + cont,
       })),
-    [estudiantes, cont]
+    [estudiantes, cont],
   );
 
   return (
@@ -94,7 +95,7 @@ const ReporteAsistencias: React.FC = () => {
       {entriesError ? (
         `Error al llamar Entries: ${entriesError}`
       ) : isEntriesLoading ? (
-        "Loading..."
+        'Loading...'
       ) : (
         <ul>
           {entries.map((entrie, index) => (

@@ -1,17 +1,17 @@
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux';
 
 // Reducers
 import estudianteReducer, {
   Estudiante,
   initialState as initialEstudiantesData,
-} from "./estudiantes.reducer";
+} from './estudiantes.reducer';
 import entrieReducer, {
   EntrieState,
   initialState as initialEntrieData,
-} from "./entries.reducer";
+} from './entries.reducer';
 
 // Types
-import { AnyData } from "../../types";
+import { AnyData } from '../../types';
 
 type PreloadedStateType = (appData: AnyData) => {
   estudiantes: Estudiante;

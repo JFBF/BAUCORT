@@ -1,5 +1,4 @@
- import {Student} from '../types'
-
+import { Student } from '../types';
 
 /** the idea is import de json data an normalizate here  */
 export const sampleUserData: Student[] = [
@@ -7,8 +6,4 @@ export const sampleUserData: Student[] = [
   { id: 102, name: 'Litopab' },
   { id: 103, name: 'Caroline' },
   { id: 104, name: 'Dave' },
-]
-
-
-
-
+];

@@ -1,6 +1,6 @@
-import React, { ReactNode } from "react";
-import Link from "next/link";
-import Head from "next/head";
+import React, { ReactNode } from 'react';
+import Link from 'next/link';
+import Head from 'next/head';
 
 interface Props {
   children?: ReactNode;
@@ -18,11 +18,11 @@ const Layout: React.FC<Props> = ({ children }) => (
       <nav>
         <Link href="/">
           <a>Login</a>
-        </Link>{" "}
-        |{" "}
+        </Link>{' '}
+        |{' '}
         <Link href="/Reporte-asistencias">
           <a>Reporte de Asistencias</a>
-        </Link>{" "}
+        </Link>{' '}
       </nav>
     </header>
     {children}

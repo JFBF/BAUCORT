@@ -1,14 +1,14 @@
 // Client
-import { doAsync } from "../../api/clientApi";
+import { doAsync } from '../../api/clientApi';
 
 // Redux
-import { ThunkDispatch } from "redux-thunk";
-import { AnyAction } from "redux";
-import { State } from "../reducers/root.reducers";
+import { ThunkDispatch } from 'redux-thunk';
+import { AnyAction } from 'redux';
+import { State } from '../reducers/root.reducers';
 
 // Types
-import { AnyData, Entrie } from "../../types";
-import { FETCH_ENTRIES } from "../actionTypes";
+import { AnyData, Entrie } from '../../types';
+import { FETCH_ENTRIES } from '../actionTypes';
 
 type APIResponse = {
   count?: number;
@@ -18,7 +18,7 @@ type APIResponse = {
 export const fetchEntries =
   () =>
   async (
-    dispatch: ThunkDispatch<State, undefined, AnyAction>
+    dispatch: ThunkDispatch<State, undefined, AnyAction>,
   ): Promise<AnyData | void> => {
     try {
       return await doAsync(
@@ -26,7 +26,7 @@ export const fetchEntries =
         FETCH_ENTRIES,
         `https://api.publicapis.org/entries`,
         {
-          method: "get",
+          method: 'get',
         },
         {
           // enviamos esto para que arrojé el error y lo tomemos en el catch de abajo y no maté el app sino que nos guarde el error en el state y lo podamos leer
@@ -36,7 +36,7 @@ export const fetchEntries =
             // UNA VEZ LLAMAMOS ESTO, PODEMOS VEL EL ESTATE DE TODA LA APP POR EL TAB DE REDUX EN LA CONSOLA
             return ApiEntries?.entries.filter((entrie) => entrie.HTTPS);
           },
-        }
+        },
       );
     } catch (err) {
       console.trace(err.message);

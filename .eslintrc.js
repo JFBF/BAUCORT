@@ -43,6 +43,7 @@ module.exports = {
         'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
         'react-hooks/exhaustive-deps': 'warn', // Checks effect dependencies
         'react/display-name': 'off', // with react-loadable this would give so many errors if enabled
+        '@typescript-eslint/ban-ts-comment': 'off',
       },
     },
   ],

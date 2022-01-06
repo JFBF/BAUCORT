@@ -44,6 +44,7 @@ const AppLayout: React.FC<Props> = ({ children }) => {
         >
           <TabPane tab="Login" key="/" />
           <TabPane tab="Reporte de Asistencias" key="/Reporte-asistencias" />
+          <TabPane tab="Calendar" key="/Calendar" />
         </Tabs>
       </Header>
       <body>

@@ -1,18 +1,18 @@
 import React from 'react';
 
 // Actions
-import { setEstudiantes } from '../redux/actions/estudiantes.actions';
-import { fetchEntries } from '../redux/actions/entries.actions';
+import { setEstudiantes } from '../../redux/actions/estudiantes.actions';
+import { fetchEntries } from '../../redux/actions/entries.actions';
 
 // Redux
 import { useDispatch, useSelector } from 'react-redux';
 
 // Types
-import { Student, Entrie } from '../types';
-import { State } from '../redux/reducers/root.reducers';
+import { Student, Entrie } from '../../types';
+import { State } from '../../redux/reducers/root.reducers';
 
 // MockData
-import { sampleUserData } from '../mockData/example';
+import { sampleUserData } from '../../mockData/example';
 
 const ReporteAsistencias: React.FC = () => {
   const dispatch = useDispatch();

@@ -12,7 +12,7 @@ import 'antd/dist/antd.css';
 import styles from './layout.module.scss';
 
 const { TabPane } = Tabs;
-const { Header } = Layout;
+const { Header, Content } = Layout;
 
 interface Props {
   children?: ReactNode;
@@ -44,12 +44,12 @@ const AppLayout: React.FC<Props> = ({ children }) => {
         >
           <TabPane tab="Login" key="/" />
           <TabPane tab="Reporte de Asistencias" key="/Reporte-asistencias" />
-          <TabPane tab="Calendar" key="/Calendar" />
+          <TabPane tab="Example" key="/Example" />
         </Tabs>
       </Header>
-      <body>
+      <Content>
         <Layout className={styles.bodyLayout}>{children}</Layout>
-      </body>
+      </Content>
     </Layout>
   );
 };

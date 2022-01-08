@@ -5,14 +5,14 @@ import { Calendar as AntCalendar, Badge, Button, Input } from 'antd';
 import { PresetStatusColorType } from '../../node_modules/antd/lib/_util/colors';
 
 // Styles
-import styles from './Calendar.module.scss';
+import styles from './ReporteAsistencias.module.scss';
 
-interface CalendarData {
+interface ReporteAsistenciasData {
   type: PresetStatusColorType;
   content: string;
 }
 
-function getListData(value: moment.Moment): CalendarData[] {
+function getListData(value: moment.Moment): ReporteAsistenciasData[] {
   let listData;
 
   switch (value.date()) {
@@ -77,7 +77,7 @@ function getListData(value: moment.Moment): CalendarData[] {
   return listData || [];
 }
 
-const Calendar: React.FC = () => {
+const ReporteAsistencias: React.FC = () => {
   const dateCellRender = React.useCallback((value: moment.Moment) => {
     const listData = getListData(value);
     return (
@@ -130,4 +130,4 @@ const Calendar: React.FC = () => {
   );
 };
 
-export default Calendar;
+export default ReporteAsistencias;

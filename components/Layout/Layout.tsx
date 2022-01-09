@@ -11,6 +11,12 @@ import { Layout, Tabs } from 'antd';
 import 'antd/dist/antd.css';
 import styles from './layout.module.scss';
 
+// Redux
+import { useSelector } from 'react-redux';
+
+// Types
+import { State } from '../../redux/reducers/root.reducers';
+
 const { TabPane } = Tabs;
 const { Header, Content } = Layout;
 
@@ -20,6 +26,10 @@ interface Props {
 
 const AppLayout: React.FC<Props> = ({ children }) => {
   const router = useRouter();
+
+  const isLoggedIn = useSelector<State, boolean>(
+    (state) => state.userInfo.isLoggedIn,
+  );
 
   const onTabClick = React.useCallback(
     (key: string) => {
@@ -42,9 +52,18 @@ const AppLayout: React.FC<Props> = ({ children }) => {
           activeKey={router.route}
           onChange={onTabClick}
         >
-          <TabPane tab="Login" key="/" />
-          <TabPane tab="Reporte de Asistencias" key="/Reporte-asistencias" />
-          <TabPane tab="Example" key="/Example" />
+          {isLoggedIn ? (
+            <>
+              <TabPane tab="Menú" key="/" />
+              <TabPane
+                tab="Reporte de Asistencias"
+                key="/Reporte-asistencias"
+              />
+              <TabPane tab="Example" key="/Example" />
+            </>
+          ) : (
+            <TabPane tab="Login" key="/Login" />
+          )}
         </Tabs>
       </Header>
       <Content>

@@ -5,3 +5,8 @@ export const FETCH_ENTRIES = {
   success: 'FETCH_ENTRIES_SUCCESS',
   error: 'FETCH_ENTRIES_ERROR',
 };
+
+export const UPDATE_USER_INFO = {
+  login: 'UPDATE_USER_INFO_LOGIN',
+  userName: 'UPDATE_USER_INFO_USERNAME',
+};

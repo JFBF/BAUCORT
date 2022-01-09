@@ -6,6 +6,16 @@ import { wrapper } from '../redux/store';
 
 // Components
 import Layout from '../components/Layout';
+import Login from '../components/Login';
+
+// Redux
+import { useSelector } from 'react-redux';
+
+// Types
+import { State } from '../redux/reducers/root.reducers';
+
+// Hooks
+import { useRouter } from 'next/router';
 
 type GetInitialProps = (context: AppContext) => unknown;
 
@@ -13,11 +23,22 @@ const WrappedApp: React.FC<AppProps> & { getInitialProps: GetInitialProps } = ({
   Component,
   pageProps,
 }) => {
-  console.log('Entróoo acá');
+  const isLoggedIn = useSelector<State, boolean>(
+    (state) => state.userInfo.isLoggedIn,
+  );
+
+  const router = useRouter();
+
+  React.useEffect(() => {
+    if (!isLoggedIn) {
+      router.push('/Login');
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
-    <Layout>
-      <Component {...pageProps} />{' '}
-    </Layout>
+    <Layout>{isLoggedIn ? <Component {...pageProps} /> : <Login />}</Layout>
   );
 };
 
